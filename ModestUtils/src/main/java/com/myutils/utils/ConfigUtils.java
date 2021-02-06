@@ -1,4 +1,5 @@
-package com.myutils.screw;
+package com.myutils.utils;
+
 import org.springframework.util.CollectionUtils;
 
 import java.text.DateFormat;
@@ -18,13 +19,13 @@ public final class ConfigUtils {
 
     public static final  Map<String,String> DATA_MAP = new HashMap<>();
     //指标图片配置
-    public static final  Map<String,String> DATA_IMG_MAP = new HashMap<>();
+    public static final Map<String,String> DATA_IMG_MAP = new HashMap<>();
 
     public static final  Map<String,String> COM_ID_MAP = new HashMap<>();
     //时间戳(1天)
     public static final Long TIME_DAY = 86400000L;
 
-    public static final  List<String> AIR_LIST = new ArrayList<>();
+    public static final List<String> AIR_LIST = new ArrayList<>();
 
     static {
         DATA_MAP.put("co2", "c");
