@@ -1,6 +1,5 @@
 package com.myutils.hutool;
 
-import cn.hutool.Hutool;
 import cn.hutool.cache.CacheUtil;
 import cn.hutool.cache.impl.FIFOCache;
 import cn.hutool.captcha.CaptchaUtil;
@@ -64,7 +63,8 @@ public class HuToolest {
      */
     @Test
     public void testGetAllUtils(){
-        Hutool.printAllUtils();
+//        Hutool.printAllUtils();
+        System.out.println(DateUtil.now());
     }
 
     /**
@@ -208,6 +208,7 @@ public class HuToolest {
     /**
      * 加密解密工具:
      * 对称加密（symmetric），例如：AES、DES等
+     * 非对称加密（asymmetric），例如：RSA、DSA等
      * 非对称加密（asymmetric），例如：RSA、DSA等
      * 摘要加密（digest），例如：MD5、SHA-1、SHA-256、HMAC等
      */
