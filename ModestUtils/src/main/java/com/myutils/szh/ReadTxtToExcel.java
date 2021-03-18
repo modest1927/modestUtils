@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -35,23 +36,30 @@ public class ReadTxtToExcel {
             try {
                 //获取文件流
                 in = resource.getInputStream();
-                ir=new InputStreamReader(in ,"UTF-8");
+                ir=new InputStreamReader(in , StandardCharsets.UTF_8);
                 br= new BufferedReader(ir);
                 String line="";
                 Map<String, Object> rowMap = new LinkedHashMap<>();
                 String filename = resource.getFilename();
                 rowMap.put("文件名",filename);
                 while((line=br.readLine())!=null){
-                    if (StringUtils.isEmpty(line) || line.contains("�") ||
+                    if (StringUtils.isEmpty(line) || line.contains("���") ||
                             line.contains("Workstation Sale Order Number") || line.contains("Option Sale Order Number")){
                         continue;
                     }
                     String[] split = line.split(":");
                     String[] split2 = line.split("：");
+                    String[] split3 = line.split("��");
                     if (split.length > 1 || split2.length > 1){
-                        String colName = split[0];
+                        String colName = split.length > split2.length ? split[0] : split2[0];
                         if (allColList.contains(colName)){
-                            String colValue = split[1];
+                            String colValue = split.length > split2.length ? split[1] : split2[1];
+                            rowMap.put(colName,colValue);
+                        }
+                    }else if (split3.length > 1){
+                        String colName = split3[0];
+                        if (allColList.contains(colName)){
+                            String colValue = split3[1];
                             rowMap.put(colName,colValue);
                         }
                     }
@@ -93,7 +101,7 @@ public class ReadTxtToExcel {
 
         //处理size小于表头数的数据,如果没有则为空
         //输出为excel
-        ExcelWriter writer = ExcelUtil.getWriter("f:/txtToExcel.xlsx");
+        ExcelWriter writer = ExcelUtil.getWriter("f:/txtToExcel2.xlsx");
         writer.passCurrentRow();
         writer.write(rows, true);
         writer.close();
