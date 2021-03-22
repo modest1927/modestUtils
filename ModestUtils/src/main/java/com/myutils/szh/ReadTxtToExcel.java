@@ -86,19 +86,16 @@ public class ReadTxtToExcel {
         }
         //将rowMap的size最大的拿出来作为统一表头
         Optional<Map<String, Object>> max = rows.stream().max(Comparator.comparingInt(Map::size));
-        if (max.isPresent()) {
-            Map<String, Object> maxMap = max.get();
-            Iterator<String> it = maxMap.keySet().iterator();
-            while (it.hasNext()){
-                String col = it.next();
-                for (Map<String, Object> row : rows) {
-                    if (!row.keySet().contains(col)){
-                        row.put(col,"-");
+        max.ifPresent(map -> {
+            map.keySet().stream().forEach(col -> {
+                        for (Map<String, Object> row : rows) {
+                            if (!row.keySet().contains(col)) {
+                                row.put(col, "-");
+                            }
+                        }
                     }
-                }
-            }
-        }
-
+            );
+        });
         //处理size小于表头数的数据,如果没有则为空
         //输出为excel
         ExcelWriter writer = ExcelUtil.getWriter("f:/txtToExcel2.xlsx");

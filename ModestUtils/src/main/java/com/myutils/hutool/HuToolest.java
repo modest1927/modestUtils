@@ -491,6 +491,9 @@ public class HuToolest {
         String pinyin = PinyinUtil.getPinyin("你好", " ");
         //获取首字母: "h, s, d, y, g"
         String result = PinyinUtil.getFirstLetter("H是第一个", ", ");
+
+        String result2 = PinyinUtil.getFirstLetter("欧阳桥建", "");
+        System.out.println(result2);
     }
 
 

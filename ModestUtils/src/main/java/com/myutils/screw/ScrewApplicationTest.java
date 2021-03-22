@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @Description
+ * @Description   数据库文档生成
  * @Author OYQJ
  * @Date 2021-02-06
  */
