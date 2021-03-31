@@ -1,4 +1,12 @@
-package com.myutils.example;
+package com.myutils.common;
+
+import cn.hutool.core.lang.PatternPool;
+import cn.hutool.core.lang.Validator;
+import cn.hutool.core.util.ReUtil;
+import com.myutils.utils.UUIDGenerator;
+import sun.misc.Regexp;
+
+import java.util.regex.Pattern;
 
 /**
  * @Description
@@ -20,10 +28,27 @@ public class CommonTest {
         System.gc();
         SoftReference<Student> studentSoftReference = new SoftReference<>(new Student());
         Student student1 = studentSoftReference.get();*/
-        String substring = "2020-11-25 10:45:34".substring(0, 10);
-        System.out.println("substring = " + substring);
 
 
+//        String substring = "2020-11-25 10:45:34".substring(0, 10);
+//        System.out.println("substring = " + substring);
+//        System.out.println(PinyinUtil.getPinyin("欧阳桥建"));
+//        System.out.println(PinyinUtil.getFirstLetter('欧'));
+        System.out.println("10002".substring(1));
+        /**
+         * 线路sp_line
+         * 线路单元sp_line_unit
+         * 地线sp_ground_wire
+         * 是否启用
+         *位置
+         */
+        System.out.println(UUIDGenerator.getNewID());
+
+        String s = "2222*111";
+        Regexp regexp = new Regexp("(*)");
+        Pattern pattern = PatternPool.get("");
+        Validator.isMatchRegex("","");
+        ReUtil.isMatch(",","");
     }
 
     public static class Student {

@@ -1,5 +1,6 @@
 package com.myutils.hutool;
 
+import cn.hutool.Hutool;
 import cn.hutool.cache.CacheUtil;
 import cn.hutool.cache.impl.FIFOCache;
 import cn.hutool.captcha.CaptchaUtil;
@@ -63,8 +64,8 @@ public class HuToolest {
      */
     @Test
     public void testGetAllUtils(){
-//        Hutool.printAllUtils();
-        System.out.println(DateUtil.now());
+        Hutool.printAllUtils();
+//        System.out.println(DateUtil.now());
     }
 
     /**
