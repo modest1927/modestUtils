@@ -60,6 +60,20 @@ public class RegexpTest {
     }
 
     @Test
+    public void test1() {
+        String reg = "^[a-zA-Z0-9!@#$%^&*_]{6,20}$";
+
+//        String reg = "/^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\\W_!@#$%^&*`~()-+=]+$)(?![a-z0-9]+$)(?![a-z\\W_!@#$%^&*`~()-+=]+$)(?![0-9\\W_!@#$%^&*`~()-+=]+$)(?![a-zA-Z0-9]+$)(?![a-zA-Z\\W_!@#$%^&*`~()-+=]+$)(?![a-z0-9\\W_!@#$%^&*`~()-+=]+$)(?![0-9A-Z\\W_!@#$%^&*`~()-+=]+$)[a-zA-Z0-9\\W_!@#$%^&*`~()-+=]{8,16}$/";
+
+        Pattern dxPattern = Pattern.compile(reg);
+        Matcher dxMatcher = dxPattern.matcher("zlgs@2021");
+        if (dxMatcher.find()){
+            String group = dxMatcher.group(1);
+            System.out.println(group);
+        }
+    }
+
+    @Test
     public void tets1(){
         String rrr = ".*(\\(.*\\))+.*";
 //        String rrr = ".*(\\){1}).*(\\(.*\\))+.*(?!(\\({1})).*";

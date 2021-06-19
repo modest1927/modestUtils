@@ -6,7 +6,6 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -18,16 +17,7 @@ public class MyImageExist {
     public static void main(String[] args){
         long s = System.currentTimeMillis();
         try {
-            //创建数据源对象
-            DriverManagerDataSource ds = new DriverManagerDataSource();
-            ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            ds.setUrl("jdbc:mysql://192.168.99.42:3306/ycbp_zs?serverTimezone=Asia/Shanghai");
-            ds.setUsername("root");
-            ds.setPassword("123456");
-            //创建jdbcTemplate对象
-            JdbcTemplate jt = new JdbcTemplate();
-            //执行操作（插入操作）
-            jt.setDataSource(ds);
+            JdbcTemplate jt = JdbcInit.getJdbcTemplate();
             String sql = "SELECT b.user_name,a.FILE_NAME,a.FILE_PATH,c.unit_name FROM s_attach_list a,s_user b,s_unit c " +
                     "WHERE a.transaction_id = b.user_id  AND transaction_type = 'sp_user_data'  AND c.UNIT_ID=b.UNIT_ID ";
             List<Map<String, Object>> dataList = jt.queryForList(sql);

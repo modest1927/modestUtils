@@ -57,7 +57,7 @@ import java.util.*;
 
 
 @SpringBootTest
-public class HuToolest {
+public class HuToolTest {
 
     /**
      * 打印所有工具类
@@ -155,6 +155,11 @@ public class HuToolest {
         System.out.println(
                 "距离下班还有:" + LocalDateTimeUtil.between(LocalDateTime.now(),LocalDateTime.of(2021,1,28,18,30,0), ChronoUnit.SECONDS)+"s"
         );
+
+        System.out.println(Integer.parseInt("0102".substring(2, 4)) - 1);
+        System.out.println(Integer.parseInt("0101".substring(2, 4)) - 1);
+        String num = String.valueOf(100 + Integer.parseInt("0102".substring(2, 4)) - 1).substring(1, 3);
+        System.out.println("0102".substring(0,2) + num);
     }
 
     /**
